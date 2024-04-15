@@ -12,11 +12,8 @@ RUN \
     # Update Ubuntu Software repository
     apt-get update && apt-get install -y wget && \
     arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
-    # Arch specific packages - GoLang
-    wget https://go.dev/dl/go1.22.0.linux-${arch}.tar.gz && tar -xzf go1.22.0.linux-${arch}.tar.gz --directory /usr/local/ && rm go1.22.0.linux-${arch}.tar.gz && \
-    # Dev and util packages
-    apt-get install -y clang llvm libelf-dev libpcap-dev vim net-tools tshark \
-    elfutils dwarves git libbsd-dev bridge-utils wget unzip build-essential traceroute \
-    bison flex sudo iproute2 pkg-config tcpdump iputils-ping curl socat netcat
+    apt-get install -y vim net-tools tshark bridge-utils unzip \
+    unzip traceroute sudo iproute2 pkg-config tcpdump \
+    iputils-ping curl socat netcat
 
 ENTRYPOINT ["/bin/bash"]
